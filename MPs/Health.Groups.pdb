@@ -1,0 +1,54 @@
+Group Base Classes.mpx*Health.Groups.HealthGroup*5*10*ClassType
+Group Base Classes.mpx*Health.Groups.SmartHealthGroup*6*10*ClassType
+Set Health State Write Action.mpx*Health.Groups.SetMonitorState*4*8*WriteActionModuleType
+Health Group Dependency Monitors.mpx*Health.Groups.HealthGroup.Availability.DependencyMonitor*4*8*DependencyMonitor
+Health Group Dependency Monitors.mpx*Health.Groups.HealthGroup.Performance.DependencyMonitor*9*8*DependencyMonitor
+Health Group Dependency Monitors.mpx*Health.Groups.HealthGroup.Security.DependencyMonitor*14*8*DependencyMonitor
+Health Group Dependency Monitors.mpx*Health.Groups.HealthGroup.Configuration.DependencyMonitor*19*8*DependencyMonitor
+Smart Health Group Dependency Monitors and Recoveries.mpx*Health.Groups.SmartHealthGroup.Availability.Percentage.DependencyMonitor*4*8*DependencyMonitor
+Smart Health Group Dependency Monitors and Recoveries.mpx*Health.Groups.SmartHealthGroup.Availability.WorstOfCustom.DependencyMonitor*10*8*DependencyMonitor
+Smart Health Group Dependency Monitors and Recoveries.mpx*Health.Groups.SmartHealthGroup.Performance.Percentage.DependencyMonitor*15*8*DependencyMonitor
+Smart Health Group Dependency Monitors and Recoveries.mpx*Health.Groups.SmartHealthGroup.Performance.WorstOfCustom.DependencyMonitor*21*8*DependencyMonitor
+Smart Health Group Dependency Monitors and Recoveries.mpx*Health.Groups.SmartHealthGroup.Security.Percentage.DependencyMonitor*26*8*DependencyMonitor
+Smart Health Group Dependency Monitors and Recoveries.mpx*Health.Groups.SmartHealthGroup.Security.WorstOfCustom.DependencyMonitor*32*8*DependencyMonitor
+Smart Health Group Dependency Monitors and Recoveries.mpx*Health.Groups.SmartHealthGroup.Configuration.Percentage.DependencyMonitor*37*8*DependencyMonitor
+Smart Health Group Dependency Monitors and Recoveries.mpx*Health.Groups.SmartHealthGroup.Configuration.WorstOfCustom.DependencyMonitor*43*8*DependencyMonitor
+Smart Health Group Dependency Monitors and Recoveries.mpx*Health.Groups.SmartHealthGroup.Availability.WorstOfCustom.DependencyMonitor.Recovery*50*8*Recovery
+Smart Health Group Dependency Monitors and Recoveries.mpx*Health.Groups.SmartHealthGroup.Performance.WorstOfCustom.DependencyMonitor.Recovery*59*8*Recovery
+Smart Health Group Dependency Monitors and Recoveries.mpx*Health.Groups.SmartHealthGroup.Security.WorstOfCustom.DependencyMonitor.Recovery*68*8*Recovery
+Smart Health Group Dependency Monitors and Recoveries.mpx*Health.Groups.SmartHealthGroup.Configuration.WorstOfCustom.DependencyMonitor.Recovery*77*8*Recovery
+Health Group Template.mpx*Health.Groups.HealthGroup.Template*3*6*Template
+Smart Health Group Template.mpx*Health.Groups.SmartHealthGroup.Template*2*6*Template
+Health Group Template.mpx*Health.Groups.HealthGroup.Template.PageSet*53*8*UIPageSet
+Smart Health Group Template.mpx*Health.Groups.SmartHealthGroup.Template.PageSet*50*8*UIPageSet
+Template Folders.mpx*Health.Groups.HealthGroup.Template.Folder*3*8*Folder
+Template Folders.mpx*Health.Groups.SmartHealthGroup.Template.Folder*4*8*Folder
+Template Folders.mpx*Health.Groups.HealthGroup.Template*7*8*FolderItem
+Template Folders.mpx*Health.Groups.SmartHealthGroup.Template*8*8*FolderItem
+Health Group Template.mpx*Health.Groups.HealthGroup.Template*84*8*ImageReference
+Smart Health Group Template.mpx*Health.Groups.SmartHealthGroup.Template*80*8*ImageReference
+Group Base Classes.mpx*Health.Groups.HealthGroup*13*10*DisplayString
+Group Base Classes.mpx*Health.Groups.SmartHealthGroup*17*10*DisplayString
+Health Group Dependency Monitors.mpx*Health.Groups.HealthGroup.Availability.DependencyMonitor*29*10*DisplayString
+Health Group Dependency Monitors.mpx*Health.Groups.HealthGroup.Performance.DependencyMonitor*33*10*DisplayString
+Health Group Dependency Monitors.mpx*Health.Groups.HealthGroup.Security.DependencyMonitor*37*10*DisplayString
+Health Group Dependency Monitors.mpx*Health.Groups.HealthGroup.Configuration.DependencyMonitor*41*10*DisplayString
+Health Group Template.mpx*Health.Groups.HealthGroup.Template*90*10*DisplayString
+ManagementPack.mpx*Health.Groups*5*10*DisplayString
+Set Health State Write Action.mpx*Health.Groups.SetMonitorState*30*10*DisplayString
+Smart Health Group Dependency Monitors and Recoveries.mpx*Health.Groups.SmartHealthGroup.Availability.Percentage.DependencyMonitor*91*10*DisplayString
+Smart Health Group Dependency Monitors and Recoveries.mpx*Health.Groups.SmartHealthGroup.Availability.WorstOfCustom.DependencyMonitor*95*10*DisplayString
+Smart Health Group Dependency Monitors and Recoveries.mpx*Health.Groups.SmartHealthGroup.Availability.WorstOfCustom.DependencyMonitor.Recovery*99*10*DisplayString
+Smart Health Group Dependency Monitors and Recoveries.mpx*Health.Groups.SmartHealthGroup.Performance.Percentage.DependencyMonitor*103*10*DisplayString
+Smart Health Group Dependency Monitors and Recoveries.mpx*Health.Groups.SmartHealthGroup.Performance.WorstOfCustom.DependencyMonitor*107*10*DisplayString
+Smart Health Group Dependency Monitors and Recoveries.mpx*Health.Groups.SmartHealthGroup.Performance.WorstOfCustom.DependencyMonitor.Recovery*111*10*DisplayString
+Smart Health Group Dependency Monitors and Recoveries.mpx*Health.Groups.SmartHealthGroup.Security.Percentage.DependencyMonitor*115*10*DisplayString
+Smart Health Group Dependency Monitors and Recoveries.mpx*Health.Groups.SmartHealthGroup.Security.WorstOfCustom.DependencyMonitor*119*10*DisplayString
+Smart Health Group Dependency Monitors and Recoveries.mpx*Health.Groups.SmartHealthGroup.Security.WorstOfCustom.DependencyMonitor.Recovery*123*10*DisplayString
+Smart Health Group Dependency Monitors and Recoveries.mpx*Health.Groups.SmartHealthGroup.Configuration.Percentage.DependencyMonitor*127*10*DisplayString
+Smart Health Group Dependency Monitors and Recoveries.mpx*Health.Groups.SmartHealthGroup.Configuration.WorstOfCustom.DependencyMonitor*131*10*DisplayString
+Smart Health Group Dependency Monitors and Recoveries.mpx*Health.Groups.SmartHealthGroup.Configuration.WorstOfCustom.DependencyMonitor.Recovery*135*10*DisplayString
+Smart Health Group Template.mpx*Health.Groups.SmartHealthGroup.Template*85*10*DisplayString
+Template Folders.mpx*Health.Groups.HealthGroup.Template.Folder*13*10*DisplayString
+Template Folders.mpx*Health.Groups.SmartHealthGroup.Template.Folder*17*10*DisplayString
+ManagementPack.mpx*Health.Groups*16*10*KnowledgeArticle

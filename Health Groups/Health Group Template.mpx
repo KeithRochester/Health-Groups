@@ -1,0 +1,99 @@
+﻿<ManagementPackFragment SchemaVersion="2.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Templates>
+    <Template ID="Health.Groups.HealthGroup.Template">
+      <Configuration>
+        <IncludeSchemaTypes>
+          <SchemaType>IG!Microsoft.SystemCenter.GenericGroup.RulesType</SchemaType>
+          <SchemaType>SC!Microsoft.SystemCenter.GroupPopulationSchema</SchemaType>
+        </IncludeSchemaTypes>
+        <xsd:element name="Namespace" type="xsd:string" />
+        <xsd:element name="TypeName" type="xsd:string" />
+        <xsd:element name="LocaleId" type="xsd:string" />
+        <xsd:element name="GroupDisplayName" type="xsd:string" />
+        <xsd:element name="GroupDescription" type="xsd:string" />
+        <xsd:element name="Rules" type="ManagementPackRules" />
+        <xsd:element name="GroupRuleDisplayString" type="ManagementPackDisplayStrings" />
+      </Configuration>
+      <References>
+        <Reference ID="Self" />
+        <Reference ID="SC" />
+        <Reference ID="IG" />
+      </References>
+      <Implementation>
+        <TypeDefinitions>
+          <EntityTypes>
+            <ClassTypes>
+              <ClassType ID="$TemplateConfig/Namespace$.$TemplateConfig/TypeName$" Abstract="false" Accessibility="Public" Hosted="false" Singleton="true" Base="$Reference/Self$Health.Groups.HealthGroup" />
+            </ClassTypes>
+            <RelationshipTypes />
+          </EntityTypes>
+        </TypeDefinitions>
+        <Monitoring>
+          <Discoveries>
+            $TemplateConfig/Rules$
+          </Discoveries>
+        </Monitoring>
+        <LanguagePacks>
+          <LanguagePack ID="$TemplateConfig/LocaleId$" IsDefault="true">
+            <DisplayStrings>
+              <DisplayString ElementID="$TemplateConfig/Namespace$.$TemplateConfig/TypeName$">
+                <Name>$TemplateConfig/GroupDisplayName$</Name>
+                <Description>$TemplateConfig/GroupDescription$</Description>
+              </DisplayString>
+              $TemplateConfig/GroupRuleDisplayString$
+            </DisplayStrings>
+          </LanguagePack>
+        </LanguagePacks>
+      </Implementation>
+    </Template>
+    
+  </Templates>
+  <PresentationTypes>
+    <UIPageSets>
+      <UIPageSet ID="Health.Groups.HealthGroup.Template.PageSet" TypeDefinitionID="Health.Groups.HealthGroup.Template">
+        <UIPageReferences>
+          <UIPageReference ID="Health.Groups.HealthGroup.Template.PageSet.GeneralPage" PageID="System!System.NameAndDescriptionPage" Usage="CreationOnly">
+            <InputParameters />
+            <InputTransform />
+            <Title ID="Health.Groups.HealthGroup.Template.PageSet.GeneralPage.Title" />
+            <SubTitle ID="Health.Groups.HealthGroup.Template.PageSet.GeneralPage.SubTitle" />
+          </UIPageReference>
+          <UIPageReference ID="Health.Groups.HealthGroup.Template.PageSet.InstancesPage" PageID="SC!Microsoft.SystemCenter.InstancesPage" Usage="CreationOnly">
+            <InputParameters />
+            <InputTransform />
+          </UIPageReference>
+          <UIPageReference ID="Health.Groups.HealthGroup.Template.PageSet.FormulaPage" PageID="SC!Microsoft.SystemCenter.FormulaPage" Usage="CreationOnly">
+            <InputParameters />
+            <InputTransform />
+          </UIPageReference>
+          <UIPageReference ID="Health.Groups.HealthGroup.Template.PageSet.SubgroupsPage" PageID="SC!Microsoft.SystemCenter.SubgroupsPage" Usage="CreationOnly">
+            <InputParameters />
+            <InputTransform />
+          </UIPageReference>
+          <UIPageReference ID="Health.Groups.HealthGroup.Template.PageSet.ExcludedMembersPage" PageID="SC!Microsoft.SystemCenter.ExcludedMembersPage" Usage="CreationOnly">
+            <InputParameters />
+            <InputTransform />
+          </UIPageReference>
+        </UIPageReferences>
+        <OutputTransform />
+      </UIPageSet>
+    </UIPageSets>
+  </PresentationTypes>
+  <Presentation>
+    <ImageReferences>
+      <ImageReference ElementID="Health.Groups.HealthGroup.Template" ImageID="IMAGE!GenericGroup16"></ImageReference>
+    </ImageReferences>
+  </Presentation>
+  <LanguagePacks>
+    <LanguagePack ID="ENU" IsDefault="true">
+      <DisplayStrings>
+        <DisplayString ElementID="Health.Groups.HealthGroup.Template">
+          <Name>Group with Health</Name>
+          <Description>Template creates a group that has standard dependency monitors targeted at it. Once created the group can be updated in the same way as other groups.</Description>
+        </DisplayString>
+      </DisplayStrings>
+    </LanguagePack>
+  </LanguagePacks>
+
+
+</ManagementPackFragment>

@@ -1,0 +1,23 @@
+﻿<ManagementPackFragment SchemaVersion="2.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><Presentation>
+    <Folders>
+      <Folder ID="Health.Groups.HealthGroup.Template.Folder" Accessibility="Public" />
+      <Folder ID="Health.Groups.SmartHealthGroup.Template.Folder" Accessibility="Public" />
+    </Folders>
+    <FolderItems>
+      <FolderItem ID="Health.Groups.HealthGroup.Template" ElementID="Health.Groups.HealthGroup.Template" Folder="Health.Groups.HealthGroup.Template.Folder" />
+      <FolderItem ID="Health.Groups.SmartHealthGroup.Template" ElementID="Health.Groups.SmartHealthGroup.Template" Folder="Health.Groups.SmartHealthGroup.Template.Folder" />
+    </FolderItems>
+  </Presentation><LanguagePacks>
+    <LanguagePack ID="ENU" IsDefault="true">
+      <DisplayStrings>
+        <DisplayString ElementID="Health.Groups.HealthGroup.Template.Folder">
+          <Name>Group with Health</Name>
+          <Description>Template creates a group that has standard dependency monitors targeted at it. Once created the group can be updated in the same way as other groups.</Description>
+        </DisplayString>
+        <DisplayString ElementID="Health.Groups.SmartHealthGroup.Template.Folder">
+          <Name>Group with Smart Health</Name>
+          <Description>Template creates a group that has custom dependency monitors targeted at it. The percentage monitor functions as normal and rolls up health once more than the configured percentage of objects are in a health state. The custom worst of will have health state set to warning if it changes to critical. Once created the group can be updated in the same way as other groups.</Description>
+        </DisplayString>
+      </DisplayStrings>
+    </LanguagePack>
+  </LanguagePacks></ManagementPackFragment>

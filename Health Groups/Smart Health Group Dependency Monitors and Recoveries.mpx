@@ -1,0 +1,142 @@
+﻿<ManagementPackFragment SchemaVersion="2.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Monitoring>
+    <Monitors>
+      <DependencyMonitor ID="Health.Groups.SmartHealthGroup.Availability.Percentage.DependencyMonitor" Accessibility="Public" Enabled="true" Target="Health.Groups.SmartHealthGroup" ParentMonitorID="Health!System.Health.AvailabilityState" Remotable="true" Priority="Normal" RelationshipType="IG!Microsoft.SystemCenter.InstanceGroupContainsEntities" MemberMonitor="Health!System.Health.AvailabilityState">
+        <Category>AvailabilityHealth</Category>
+        <Algorithm>Percentage</Algorithm>
+        <AlgorithmParameter>50</AlgorithmParameter>
+        <MemberUnAvailable>Error</MemberUnAvailable>
+      </DependencyMonitor>
+      <DependencyMonitor ID="Health.Groups.SmartHealthGroup.Availability.WorstOfCustom.DependencyMonitor" Accessibility="Public" Enabled="true" Target="Health.Groups.SmartHealthGroup" ParentMonitorID="Health!System.Health.AvailabilityState" Remotable="true" Priority="Normal" RelationshipType="IG!Microsoft.SystemCenter.InstanceGroupContainsEntities" MemberMonitor="Health!System.Health.AvailabilityState">
+        <Category>AvailabilityHealth</Category>
+        <Algorithm>WorstOf</Algorithm>
+        <MemberUnAvailable>Error</MemberUnAvailable>
+      </DependencyMonitor>
+      <DependencyMonitor ID="Health.Groups.SmartHealthGroup.Performance.Percentage.DependencyMonitor" Accessibility="Public" Enabled="true" Target="Health.Groups.SmartHealthGroup" ParentMonitorID="Health!System.Health.PerformanceState" Remotable="true" Priority="Normal" RelationshipType="IG!Microsoft.SystemCenter.InstanceGroupContainsEntities" MemberMonitor="Health!System.Health.PerformanceState">
+        <Category>PerformanceHealth</Category>
+        <Algorithm>Percentage</Algorithm>
+        <AlgorithmParameter>50</AlgorithmParameter>
+        <MemberUnAvailable>Error</MemberUnAvailable>
+      </DependencyMonitor>
+      <DependencyMonitor ID="Health.Groups.SmartHealthGroup.Performance.WorstOfCustom.DependencyMonitor" Accessibility="Public" Enabled="true" Target="Health.Groups.SmartHealthGroup" ParentMonitorID="Health!System.Health.PerformanceState" Remotable="true" Priority="Normal" RelationshipType="IG!Microsoft.SystemCenter.InstanceGroupContainsEntities" MemberMonitor="Health!System.Health.PerformanceState">
+        <Category>PerformanceHealth</Category>
+        <Algorithm>WorstOf</Algorithm>
+        <MemberUnAvailable>Error</MemberUnAvailable>
+      </DependencyMonitor>
+      <DependencyMonitor ID="Health.Groups.SmartHealthGroup.Security.Percentage.DependencyMonitor" Accessibility="Public" Enabled="true" Target="Health.Groups.SmartHealthGroup" ParentMonitorID="Health!System.Health.SecurityState" Remotable="true" Priority="Normal" RelationshipType="IG!Microsoft.SystemCenter.InstanceGroupContainsEntities" MemberMonitor="Health!System.Health.SecurityState">
+        <Category>SecurityHealth</Category>
+        <Algorithm>Percentage</Algorithm>
+        <AlgorithmParameter>50</AlgorithmParameter>
+        <MemberUnAvailable>Error</MemberUnAvailable>
+      </DependencyMonitor>
+      <DependencyMonitor ID="Health.Groups.SmartHealthGroup.Security.WorstOfCustom.DependencyMonitor" Accessibility="Public" Enabled="true" Target="Health.Groups.SmartHealthGroup" ParentMonitorID="Health!System.Health.SecurityState" Remotable="true" Priority="Normal" RelationshipType="IG!Microsoft.SystemCenter.InstanceGroupContainsEntities" MemberMonitor="Health!System.Health.SecurityState">
+        <Category>SecurityHealth</Category>
+        <Algorithm>WorstOf</Algorithm>
+        <MemberUnAvailable>Error</MemberUnAvailable>
+      </DependencyMonitor>
+      <DependencyMonitor ID="Health.Groups.SmartHealthGroup.Configuration.Percentage.DependencyMonitor" Accessibility="Public" Enabled="true" Target="Health.Groups.SmartHealthGroup" ParentMonitorID="Health!System.Health.ConfigurationState" Remotable="true" Priority="Normal" RelationshipType="IG!Microsoft.SystemCenter.InstanceGroupContainsEntities" MemberMonitor="Health!System.Health.ConfigurationState">
+        <Category>ConfigurationHealth</Category>
+        <Algorithm>Percentage</Algorithm>
+        <AlgorithmParameter>50</AlgorithmParameter>
+        <MemberUnAvailable>Error</MemberUnAvailable>
+      </DependencyMonitor>
+      <DependencyMonitor ID="Health.Groups.SmartHealthGroup.Configuration.WorstOfCustom.DependencyMonitor" Accessibility="Public" Enabled="true" Target="Health.Groups.SmartHealthGroup" ParentMonitorID="Health!System.Health.ConfigurationState" Remotable="true" Priority="Normal" RelationshipType="IG!Microsoft.SystemCenter.InstanceGroupContainsEntities" MemberMonitor="Health!System.Health.ConfigurationState">
+        <Category>ConfigurationHealth</Category>
+        <Algorithm>WorstOf</Algorithm>
+        <MemberUnAvailable>Error</MemberUnAvailable>
+      </DependencyMonitor>
+    </Monitors>
+    <Recoveries>
+      <Recovery ID="Health.Groups.SmartHealthGroup.Availability.WorstOfCustom.DependencyMonitor.Recovery" Accessibility="Public" Enabled="true" Target="Health.Groups.SmartHealthGroup" Monitor="Health.Groups.SmartHealthGroup.Availability.WorstOfCustom.DependencyMonitor" ResetMonitor="true" ExecuteOnState="Error" Remotable="true" Timeout="300">
+        <Category>Custom</Category>
+        <WriteAction ID="WA" TypeID="Health.Groups.SetMonitorState">
+          <ManagementGroupId>$Target/ManagementGroup/Id$</ManagementGroupId>
+          <MonitorId>$MPElement[Name="Health.Groups.SmartHealthGroup.Availability.WorstOfCustom.DependencyMonitor"]$</MonitorId>
+          <ManagedEntityId>$Target/Id$</ManagedEntityId>
+          <HealthState>Warning</HealthState>
+        </WriteAction>
+      </Recovery>
+      <Recovery ID="Health.Groups.SmartHealthGroup.Performance.WorstOfCustom.DependencyMonitor.Recovery" Accessibility="Public" Enabled="true" Target="Health.Groups.SmartHealthGroup" Monitor="Health.Groups.SmartHealthGroup.Performance.WorstOfCustom.DependencyMonitor" ResetMonitor="true" ExecuteOnState="Error" Remotable="true" Timeout="300">
+        <Category>Custom</Category>
+        <WriteAction ID="WA" TypeID="Health.Groups.SetMonitorState">
+          <ManagementGroupId>$Target/ManagementGroup/Id$</ManagementGroupId>
+          <MonitorId>$MPElement[Name="Health.Groups.SmartHealthGroup.Performance.WorstOfCustom.DependencyMonitor"]$</MonitorId>
+          <ManagedEntityId>$Target/Id$</ManagedEntityId>
+          <HealthState>Warning</HealthState>
+        </WriteAction>
+      </Recovery>
+      <Recovery ID="Health.Groups.SmartHealthGroup.Security.WorstOfCustom.DependencyMonitor.Recovery" Accessibility="Public" Enabled="true" Target="Health.Groups.SmartHealthGroup" Monitor="Health.Groups.SmartHealthGroup.Security.WorstOfCustom.DependencyMonitor" ResetMonitor="true" ExecuteOnState="Error" Remotable="true" Timeout="300">
+        <Category>Custom</Category>
+        <WriteAction ID="WA" TypeID="Health.Groups.SetMonitorState">
+          <ManagementGroupId>$Target/ManagementGroup/Id$</ManagementGroupId>
+          <MonitorId>$MPElement[Name="Health.Groups.SmartHealthGroup.Security.WorstOfCustom.DependencyMonitor"]$</MonitorId>
+          <ManagedEntityId>$Target/Id$</ManagedEntityId>
+          <HealthState>Warning</HealthState>
+        </WriteAction>
+      </Recovery>
+      <Recovery ID="Health.Groups.SmartHealthGroup.Configuration.WorstOfCustom.DependencyMonitor.Recovery" Accessibility="Public" Enabled="true" Target="Health.Groups.SmartHealthGroup" Monitor="Health.Groups.SmartHealthGroup.Configuration.WorstOfCustom.DependencyMonitor" ResetMonitor="true" ExecuteOnState="Error" Remotable="true" Timeout="300">
+        <Category>Custom</Category>
+        <WriteAction ID="WA" TypeID="Health.Groups.SetMonitorState">
+          <ManagementGroupId>$Target/ManagementGroup/Id$</ManagementGroupId>
+          <MonitorId>$MPElement[Name="Health.Groups.SmartHealthGroup.Configuration.WorstOfCustom.DependencyMonitor"]$</MonitorId>
+          <ManagedEntityId>$Target/Id$</ManagedEntityId>
+          <HealthState>Warning</HealthState>
+        </WriteAction>
+      </Recovery>
+    </Recoveries>
+  </Monitoring>
+  <LanguagePacks>
+    <LanguagePack ID="ENU" IsDefault="true">
+      <DisplayStrings>
+        <DisplayString ElementID="Health.Groups.SmartHealthGroup.Availability.Percentage.DependencyMonitor">
+          <Name>Availability Percentage Roll Up</Name>
+          <Description>Rolls up Availability health of group members based on configured percentage of members.</Description>
+        </DisplayString>
+        <DisplayString ElementID="Health.Groups.SmartHealthGroup.Availability.WorstOfCustom.DependencyMonitor">
+          <Name>Availability Custom Worst of Roll Up</Name>
+          <Description>Rolls up Availability health of group members based worst member health. Critical States are rolled up as warning.</Description>
+        </DisplayString>
+        <DisplayString ElementID="Health.Groups.SmartHealthGroup.Availability.WorstOfCustom.DependencyMonitor.Recovery">
+          <Name>Sets Critical Availability Health State to Warning</Name>
+          <Description>Sets Critical Availability Health State to Warning.</Description>
+        </DisplayString>
+        <DisplayString ElementID="Health.Groups.SmartHealthGroup.Performance.Percentage.DependencyMonitor">
+          <Name>Performance Percentage Roll Up</Name>
+          <Description>Rolls up Performance health of group members based on configured percentage of members.</Description>
+        </DisplayString>
+        <DisplayString ElementID="Health.Groups.SmartHealthGroup.Performance.WorstOfCustom.DependencyMonitor">
+          <Name>Performance Custom Worst of Roll Up</Name>
+          <Description>Rolls up Performance health of group members based worst member health. Critical States are rolled up as warning.</Description>
+        </DisplayString>
+        <DisplayString ElementID="Health.Groups.SmartHealthGroup.Performance.WorstOfCustom.DependencyMonitor.Recovery">
+          <Name>Sets Critical Performance Health State to Warning</Name>
+          <Description>Sets Critical Performance Health State to Warning.</Description>
+        </DisplayString>
+        <DisplayString ElementID="Health.Groups.SmartHealthGroup.Security.Percentage.DependencyMonitor">
+          <Name>Security Percentage Roll Up</Name>
+          <Description>Rolls up Security health of group members based on configured percentage of members.</Description>
+        </DisplayString>
+        <DisplayString ElementID="Health.Groups.SmartHealthGroup.Security.WorstOfCustom.DependencyMonitor">
+          <Name>Security Custom Worst of Roll Up</Name>
+          <Description>Rolls up Security health of group members based worst member health. Critical States are rolled up as warning.</Description>
+        </DisplayString>
+        <DisplayString ElementID="Health.Groups.SmartHealthGroup.Security.WorstOfCustom.DependencyMonitor.Recovery">
+          <Name>Sets Critical Security Health State to Warning</Name>
+          <Description>Sets Critical Security Health State to Warning.</Description>
+        </DisplayString>
+        <DisplayString ElementID="Health.Groups.SmartHealthGroup.Configuration.Percentage.DependencyMonitor">
+          <Name>Configuration Percentage Roll Up</Name>
+          <Description>Rolls up Configuration health of group members based on configured percentage of members.</Description>
+        </DisplayString>
+        <DisplayString ElementID="Health.Groups.SmartHealthGroup.Configuration.WorstOfCustom.DependencyMonitor">
+          <Name>Configuration Custom Worst of Roll Up</Name>
+          <Description>Rolls up Configuration health of group members based worst member health. Critical States are rolled up as warning.</Description>
+        </DisplayString>
+        <DisplayString ElementID="Health.Groups.SmartHealthGroup.Configuration.WorstOfCustom.DependencyMonitor.Recovery">
+          <Name>Sets Critical Configuration Health State to Warning</Name>
+          <Description>Sets Critical Configuration Health State to Warning.</Description>
+        </DisplayString>
+      </DisplayStrings>
+    </LanguagePack>
+  </LanguagePacks>
+</ManagementPackFragment>

@@ -1,0 +1,37 @@
+﻿<ManagementPackFragment SchemaVersion="2.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema">  
+  <TypeDefinitions>
+    <ModuleTypes>
+      <WriteActionModuleType ID="Health.Groups.SetMonitorState" Accessibility="Public" Batching="false">
+        <Configuration>
+          <IncludeSchemaTypes>
+            <SchemaType>Health!System.Health.AlertSchema</SchemaType>
+            <!--"Success" 
+                "Warning"
+                "Error"
+            -->
+          </IncludeSchemaTypes>
+          <xsd:element name="ManagementGroupId" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+          <xsd:element name="MonitorId" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+          <xsd:element name="ManagedEntityId" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+          <xsd:element name="HealthState" type="System.Health.AlertHealthState" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+        </Configuration>
+        <ModuleImplementation Isolation="Any">
+          <Native>
+            <ClassID>44cbc334-8b5f-4cb6-bee0-6bdcbc80e8d5</ClassID>
+          </Native>
+        </ModuleImplementation>
+        <InputType>System!System.BaseData</InputType>
+      </WriteActionModuleType>
+    </ModuleTypes>
+  </TypeDefinitions>
+  <LanguagePacks>
+    <LanguagePack ID="ENU" IsDefault="true">
+      <DisplayStrings>
+        <DisplayString ElementID="Health.Groups.SetMonitorState">
+          <Name>Set Monitor Health State</Name>
+          <Description>Sets the health state of the monitor.</Description>
+        </DisplayString>
+      </DisplayStrings>
+    </LanguagePack>
+  </LanguagePacks>
+</ManagementPackFragment>

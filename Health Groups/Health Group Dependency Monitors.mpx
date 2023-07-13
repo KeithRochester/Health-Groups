@@ -1,0 +1,48 @@
+﻿<ManagementPackFragment SchemaVersion="2.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Monitoring>
+    <Monitors>
+      <DependencyMonitor ID="Health.Groups.HealthGroup.Availability.DependencyMonitor" Accessibility="Public" Enabled="true" Target="Health.Groups.HealthGroup" ParentMonitorID="Health!System.Health.AvailabilityState" Remotable="true" Priority="Normal" RelationshipType="IG!Microsoft.SystemCenter.InstanceGroupContainsEntities" MemberMonitor="Health!System.Health.AvailabilityState">
+        <Category>AvailabilityHealth</Category>
+        <Algorithm>WorstOf</Algorithm>
+        <MemberUnAvailable>Error</MemberUnAvailable>
+      </DependencyMonitor>
+      <DependencyMonitor ID="Health.Groups.HealthGroup.Performance.DependencyMonitor" Accessibility="Public" Enabled="true" Target="Health.Groups.HealthGroup" ParentMonitorID="Health!System.Health.PerformanceState" Remotable="true" Priority="Normal" RelationshipType="IG!Microsoft.SystemCenter.InstanceGroupContainsEntities" MemberMonitor="Health!System.Health.PerformanceState">
+        <Category>PerformanceHealth</Category>
+        <Algorithm>WorstOf</Algorithm>
+        <MemberUnAvailable>Error</MemberUnAvailable>
+      </DependencyMonitor>
+      <DependencyMonitor ID="Health.Groups.HealthGroup.Security.DependencyMonitor" Accessibility="Public" Enabled="true" Target="Health.Groups.HealthGroup" ParentMonitorID="Health!System.Health.SecurityState" Remotable="true" Priority="Normal" RelationshipType="IG!Microsoft.SystemCenter.InstanceGroupContainsEntities" MemberMonitor="Health!System.Health.SecurityState">
+        <Category>SecurityHealth</Category>
+        <Algorithm>WorstOf</Algorithm>
+        <MemberUnAvailable>Error</MemberUnAvailable>
+      </DependencyMonitor>
+      <DependencyMonitor ID="Health.Groups.HealthGroup.Configuration.DependencyMonitor" Accessibility="Public" Enabled="true" Target="Health.Groups.HealthGroup" ParentMonitorID="Health!System.Health.ConfigurationState" Remotable="true" Priority="Normal" RelationshipType="IG!Microsoft.SystemCenter.InstanceGroupContainsEntities" MemberMonitor="Health!System.Health.ConfigurationState">
+        <Category>ConfigurationHealth</Category>
+        <Algorithm>WorstOf</Algorithm>
+        <MemberUnAvailable>Error</MemberUnAvailable>
+      </DependencyMonitor>      
+    </Monitors>
+  </Monitoring>
+  <LanguagePacks>
+    <LanguagePack ID="ENU" IsDefault="true">
+      <DisplayStrings>
+        <DisplayString ElementID="Health.Groups.HealthGroup.Availability.DependencyMonitor">
+          <Name>Availability Dependency Monitor</Name>
+          <Description>Rolls up Availability health of group members based on configured percentage of members.</Description>
+        </DisplayString>
+        <DisplayString ElementID="Health.Groups.HealthGroup.Performance.DependencyMonitor">
+          <Name>Performance Dependency Monitor</Name>
+          <Description>Rolls up Performance health of group members based on configured percentage of members.</Description>
+        </DisplayString>
+        <DisplayString ElementID="Health.Groups.HealthGroup.Security.DependencyMonitor">
+          <Name>Security Dependency Monitor</Name>
+          <Description>Rolls up Security health of group members based on configured percentage of members.</Description>
+        </DisplayString>
+        <DisplayString ElementID="Health.Groups.HealthGroup.Configuration.DependencyMonitor">
+          <Name>Configuration Dependency Monitor</Name>
+          <Description>Rolls up Configuration health of group members based on configured percentage of members.</Description>
+        </DisplayString>
+      </DisplayStrings>
+    </LanguagePack>
+  </LanguagePacks>
+</ManagementPackFragment>

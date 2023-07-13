@@ -1,0 +1,460 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ManagementPack SchemaVersion="2.0" ContentReadable="true" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Manifest>
+    <Identity>
+      <ID>Health.Groups</ID>
+      <Version>1.0.0.24</Version>
+    </Identity>
+    <Name>Health Groups</Name>
+    <References>
+      <Reference Alias="IG">
+        <ID>Microsoft.SystemCenter.InstanceGroup.Library</ID>
+        <Version>7.5.8501.0</Version>
+        <PublicKeyToken>31bf3856ad364e35</PublicKeyToken>
+      </Reference>
+      <Reference Alias="SC">
+        <ID>Microsoft.SystemCenter.Library</ID>
+        <Version>7.0.8433.0</Version>
+        <PublicKeyToken>31bf3856ad364e35</PublicKeyToken>
+      </Reference>
+      <Reference Alias="Health">
+        <ID>System.Health.Library</ID>
+        <Version>7.0.8433.0</Version>
+        <PublicKeyToken>31bf3856ad364e35</PublicKeyToken>
+      </Reference>
+      <Reference Alias="IMAGE">
+        <ID>System.Image.Library</ID>
+        <Version>7.5.8501.0</Version>
+        <PublicKeyToken>31bf3856ad364e35</PublicKeyToken>
+      </Reference>
+      <Reference Alias="System">
+        <ID>System.Library</ID>
+        <Version>7.5.8501.0</Version>
+        <PublicKeyToken>31bf3856ad364e35</PublicKeyToken>
+      </Reference>
+    </References>
+  </Manifest>
+  <TypeDefinitions>
+    <EntityTypes>
+      <ClassTypes>
+        <ClassType ID="Health.Groups.HealthGroup" Abstract="true" Hosted="false" Base="IG!Microsoft.SystemCenter.InstanceGroup" Accessibility="Public"></ClassType>
+        <ClassType ID="Health.Groups.SmartHealthGroup" Abstract="true" Hosted="false" Base="IG!Microsoft.SystemCenter.InstanceGroup" Accessibility="Public"></ClassType>
+      </ClassTypes>
+    </EntityTypes>
+    <ModuleTypes>
+      <WriteActionModuleType ID="Health.Groups.SetMonitorState" Accessibility="Public" Batching="false">
+        <Configuration>
+          <IncludeSchemaTypes>
+            <SchemaType>Health!System.Health.AlertSchema</SchemaType>
+            <!--"Success" 
+                "Warning"
+                "Error"
+            -->
+          </IncludeSchemaTypes>
+          <xsd:element name="ManagementGroupId" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+          <xsd:element name="MonitorId" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+          <xsd:element name="ManagedEntityId" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+          <xsd:element name="HealthState" type="System.Health.AlertHealthState" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+        </Configuration>
+        <ModuleImplementation Isolation="Any">
+          <Native>
+            <ClassID>44cbc334-8b5f-4cb6-bee0-6bdcbc80e8d5</ClassID>
+          </Native>
+        </ModuleImplementation>
+        <InputType>System!System.BaseData</InputType>
+      </WriteActionModuleType>
+    </ModuleTypes>
+  </TypeDefinitions>
+  <Monitoring>
+    <Monitors>
+      <DependencyMonitor ID="Health.Groups.HealthGroup.Availability.DependencyMonitor" Accessibility="Public" Enabled="true" Target="Health.Groups.HealthGroup" ParentMonitorID="Health!System.Health.AvailabilityState" Remotable="true" Priority="Normal" RelationshipType="IG!Microsoft.SystemCenter.InstanceGroupContainsEntities" MemberMonitor="Health!System.Health.AvailabilityState">
+        <Category>AvailabilityHealth</Category>
+        <Algorithm>WorstOf</Algorithm>
+        <MemberUnAvailable>Error</MemberUnAvailable>
+      </DependencyMonitor>
+      <DependencyMonitor ID="Health.Groups.HealthGroup.Performance.DependencyMonitor" Accessibility="Public" Enabled="true" Target="Health.Groups.HealthGroup" ParentMonitorID="Health!System.Health.PerformanceState" Remotable="true" Priority="Normal" RelationshipType="IG!Microsoft.SystemCenter.InstanceGroupContainsEntities" MemberMonitor="Health!System.Health.PerformanceState">
+        <Category>PerformanceHealth</Category>
+        <Algorithm>WorstOf</Algorithm>
+        <MemberUnAvailable>Error</MemberUnAvailable>
+      </DependencyMonitor>
+      <DependencyMonitor ID="Health.Groups.HealthGroup.Security.DependencyMonitor" Accessibility="Public" Enabled="true" Target="Health.Groups.HealthGroup" ParentMonitorID="Health!System.Health.SecurityState" Remotable="true" Priority="Normal" RelationshipType="IG!Microsoft.SystemCenter.InstanceGroupContainsEntities" MemberMonitor="Health!System.Health.SecurityState">
+        <Category>SecurityHealth</Category>
+        <Algorithm>WorstOf</Algorithm>
+        <MemberUnAvailable>Error</MemberUnAvailable>
+      </DependencyMonitor>
+      <DependencyMonitor ID="Health.Groups.HealthGroup.Configuration.DependencyMonitor" Accessibility="Public" Enabled="true" Target="Health.Groups.HealthGroup" ParentMonitorID="Health!System.Health.ConfigurationState" Remotable="true" Priority="Normal" RelationshipType="IG!Microsoft.SystemCenter.InstanceGroupContainsEntities" MemberMonitor="Health!System.Health.ConfigurationState">
+        <Category>ConfigurationHealth</Category>
+        <Algorithm>WorstOf</Algorithm>
+        <MemberUnAvailable>Error</MemberUnAvailable>
+      </DependencyMonitor>
+      <DependencyMonitor ID="Health.Groups.SmartHealthGroup.Availability.Percentage.DependencyMonitor" Accessibility="Public" Enabled="true" Target="Health.Groups.SmartHealthGroup" ParentMonitorID="Health!System.Health.AvailabilityState" Remotable="true" Priority="Normal" RelationshipType="IG!Microsoft.SystemCenter.InstanceGroupContainsEntities" MemberMonitor="Health!System.Health.AvailabilityState">
+        <Category>AvailabilityHealth</Category>
+        <Algorithm>Percentage</Algorithm>
+        <AlgorithmParameter>50</AlgorithmParameter>
+        <MemberUnAvailable>Error</MemberUnAvailable>
+      </DependencyMonitor>
+      <DependencyMonitor ID="Health.Groups.SmartHealthGroup.Availability.WorstOfCustom.DependencyMonitor" Accessibility="Public" Enabled="true" Target="Health.Groups.SmartHealthGroup" ParentMonitorID="Health!System.Health.AvailabilityState" Remotable="true" Priority="Normal" RelationshipType="IG!Microsoft.SystemCenter.InstanceGroupContainsEntities" MemberMonitor="Health!System.Health.AvailabilityState">
+        <Category>AvailabilityHealth</Category>
+        <Algorithm>WorstOf</Algorithm>
+        <MemberUnAvailable>Error</MemberUnAvailable>
+      </DependencyMonitor>
+      <DependencyMonitor ID="Health.Groups.SmartHealthGroup.Performance.Percentage.DependencyMonitor" Accessibility="Public" Enabled="true" Target="Health.Groups.SmartHealthGroup" ParentMonitorID="Health!System.Health.PerformanceState" Remotable="true" Priority="Normal" RelationshipType="IG!Microsoft.SystemCenter.InstanceGroupContainsEntities" MemberMonitor="Health!System.Health.PerformanceState">
+        <Category>PerformanceHealth</Category>
+        <Algorithm>Percentage</Algorithm>
+        <AlgorithmParameter>50</AlgorithmParameter>
+        <MemberUnAvailable>Error</MemberUnAvailable>
+      </DependencyMonitor>
+      <DependencyMonitor ID="Health.Groups.SmartHealthGroup.Performance.WorstOfCustom.DependencyMonitor" Accessibility="Public" Enabled="true" Target="Health.Groups.SmartHealthGroup" ParentMonitorID="Health!System.Health.PerformanceState" Remotable="true" Priority="Normal" RelationshipType="IG!Microsoft.SystemCenter.InstanceGroupContainsEntities" MemberMonitor="Health!System.Health.PerformanceState">
+        <Category>PerformanceHealth</Category>
+        <Algorithm>WorstOf</Algorithm>
+        <MemberUnAvailable>Error</MemberUnAvailable>
+      </DependencyMonitor>
+      <DependencyMonitor ID="Health.Groups.SmartHealthGroup.Security.Percentage.DependencyMonitor" Accessibility="Public" Enabled="true" Target="Health.Groups.SmartHealthGroup" ParentMonitorID="Health!System.Health.SecurityState" Remotable="true" Priority="Normal" RelationshipType="IG!Microsoft.SystemCenter.InstanceGroupContainsEntities" MemberMonitor="Health!System.Health.SecurityState">
+        <Category>SecurityHealth</Category>
+        <Algorithm>Percentage</Algorithm>
+        <AlgorithmParameter>50</AlgorithmParameter>
+        <MemberUnAvailable>Error</MemberUnAvailable>
+      </DependencyMonitor>
+      <DependencyMonitor ID="Health.Groups.SmartHealthGroup.Security.WorstOfCustom.DependencyMonitor" Accessibility="Public" Enabled="true" Target="Health.Groups.SmartHealthGroup" ParentMonitorID="Health!System.Health.SecurityState" Remotable="true" Priority="Normal" RelationshipType="IG!Microsoft.SystemCenter.InstanceGroupContainsEntities" MemberMonitor="Health!System.Health.SecurityState">
+        <Category>SecurityHealth</Category>
+        <Algorithm>WorstOf</Algorithm>
+        <MemberUnAvailable>Error</MemberUnAvailable>
+      </DependencyMonitor>
+      <DependencyMonitor ID="Health.Groups.SmartHealthGroup.Configuration.Percentage.DependencyMonitor" Accessibility="Public" Enabled="true" Target="Health.Groups.SmartHealthGroup" ParentMonitorID="Health!System.Health.ConfigurationState" Remotable="true" Priority="Normal" RelationshipType="IG!Microsoft.SystemCenter.InstanceGroupContainsEntities" MemberMonitor="Health!System.Health.ConfigurationState">
+        <Category>ConfigurationHealth</Category>
+        <Algorithm>Percentage</Algorithm>
+        <AlgorithmParameter>50</AlgorithmParameter>
+        <MemberUnAvailable>Error</MemberUnAvailable>
+      </DependencyMonitor>
+      <DependencyMonitor ID="Health.Groups.SmartHealthGroup.Configuration.WorstOfCustom.DependencyMonitor" Accessibility="Public" Enabled="true" Target="Health.Groups.SmartHealthGroup" ParentMonitorID="Health!System.Health.ConfigurationState" Remotable="true" Priority="Normal" RelationshipType="IG!Microsoft.SystemCenter.InstanceGroupContainsEntities" MemberMonitor="Health!System.Health.ConfigurationState">
+        <Category>ConfigurationHealth</Category>
+        <Algorithm>WorstOf</Algorithm>
+        <MemberUnAvailable>Error</MemberUnAvailable>
+      </DependencyMonitor>
+    </Monitors>
+    <Recoveries>
+      <Recovery ID="Health.Groups.SmartHealthGroup.Availability.WorstOfCustom.DependencyMonitor.Recovery" Accessibility="Public" Enabled="true" Target="Health.Groups.SmartHealthGroup" Monitor="Health.Groups.SmartHealthGroup.Availability.WorstOfCustom.DependencyMonitor" ResetMonitor="true" ExecuteOnState="Error" Remotable="true" Timeout="300">
+        <Category>Custom</Category>
+        <WriteAction ID="WA" TypeID="Health.Groups.SetMonitorState">
+          <ManagementGroupId>$Target/ManagementGroup/Id$</ManagementGroupId>
+          <MonitorId>$MPElement[Name="Health.Groups.SmartHealthGroup.Availability.WorstOfCustom.DependencyMonitor"]$</MonitorId>
+          <ManagedEntityId>$Target/Id$</ManagedEntityId>
+          <HealthState>Warning</HealthState>
+        </WriteAction>
+      </Recovery>
+      <Recovery ID="Health.Groups.SmartHealthGroup.Performance.WorstOfCustom.DependencyMonitor.Recovery" Accessibility="Public" Enabled="true" Target="Health.Groups.SmartHealthGroup" Monitor="Health.Groups.SmartHealthGroup.Performance.WorstOfCustom.DependencyMonitor" ResetMonitor="true" ExecuteOnState="Error" Remotable="true" Timeout="300">
+        <Category>Custom</Category>
+        <WriteAction ID="WA" TypeID="Health.Groups.SetMonitorState">
+          <ManagementGroupId>$Target/ManagementGroup/Id$</ManagementGroupId>
+          <MonitorId>$MPElement[Name="Health.Groups.SmartHealthGroup.Performance.WorstOfCustom.DependencyMonitor"]$</MonitorId>
+          <ManagedEntityId>$Target/Id$</ManagedEntityId>
+          <HealthState>Warning</HealthState>
+        </WriteAction>
+      </Recovery>
+      <Recovery ID="Health.Groups.SmartHealthGroup.Security.WorstOfCustom.DependencyMonitor.Recovery" Accessibility="Public" Enabled="true" Target="Health.Groups.SmartHealthGroup" Monitor="Health.Groups.SmartHealthGroup.Security.WorstOfCustom.DependencyMonitor" ResetMonitor="true" ExecuteOnState="Error" Remotable="true" Timeout="300">
+        <Category>Custom</Category>
+        <WriteAction ID="WA" TypeID="Health.Groups.SetMonitorState">
+          <ManagementGroupId>$Target/ManagementGroup/Id$</ManagementGroupId>
+          <MonitorId>$MPElement[Name="Health.Groups.SmartHealthGroup.Security.WorstOfCustom.DependencyMonitor"]$</MonitorId>
+          <ManagedEntityId>$Target/Id$</ManagedEntityId>
+          <HealthState>Warning</HealthState>
+        </WriteAction>
+      </Recovery>
+      <Recovery ID="Health.Groups.SmartHealthGroup.Configuration.WorstOfCustom.DependencyMonitor.Recovery" Accessibility="Public" Enabled="true" Target="Health.Groups.SmartHealthGroup" Monitor="Health.Groups.SmartHealthGroup.Configuration.WorstOfCustom.DependencyMonitor" ResetMonitor="true" ExecuteOnState="Error" Remotable="true" Timeout="300">
+        <Category>Custom</Category>
+        <WriteAction ID="WA" TypeID="Health.Groups.SetMonitorState">
+          <ManagementGroupId>$Target/ManagementGroup/Id$</ManagementGroupId>
+          <MonitorId>$MPElement[Name="Health.Groups.SmartHealthGroup.Configuration.WorstOfCustom.DependencyMonitor"]$</MonitorId>
+          <ManagedEntityId>$Target/Id$</ManagedEntityId>
+          <HealthState>Warning</HealthState>
+        </WriteAction>
+      </Recovery>
+    </Recoveries>
+  </Monitoring>
+  <Templates>
+    <Template ID="Health.Groups.HealthGroup.Template">
+      <Configuration>
+        <IncludeSchemaTypes>
+          <SchemaType>IG!Microsoft.SystemCenter.GenericGroup.RulesType</SchemaType>
+          <SchemaType>SC!Microsoft.SystemCenter.GroupPopulationSchema</SchemaType>
+        </IncludeSchemaTypes>
+        <xsd:element name="Namespace" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+        <xsd:element name="TypeName" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+        <xsd:element name="LocaleId" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+        <xsd:element name="GroupDisplayName" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+        <xsd:element name="GroupDescription" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+        <xsd:element name="Rules" type="ManagementPackRules" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+        <xsd:element name="GroupRuleDisplayString" type="ManagementPackDisplayStrings" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+      </Configuration>
+      <References>
+        <Reference ID="Self" />
+        <Reference ID="SC" />
+        <Reference ID="IG" />
+      </References>
+      <Implementation>
+        <TypeDefinitions>
+          <EntityTypes>
+            <ClassTypes>
+              <ClassType ID="$TemplateConfig/Namespace$.$TemplateConfig/TypeName$" Abstract="false" Accessibility="Public" Hosted="false" Singleton="true" Base="$Reference/Self$Health.Groups.HealthGroup" />
+            </ClassTypes>
+            <RelationshipTypes />
+          </EntityTypes>
+        </TypeDefinitions>
+        <Monitoring>
+          <Discoveries>
+            $TemplateConfig/Rules$
+          </Discoveries>
+        </Monitoring>
+        <LanguagePacks>
+          <LanguagePack ID="$TemplateConfig/LocaleId$" IsDefault="true">
+            <DisplayStrings>
+              <DisplayString ElementID="$TemplateConfig/Namespace$.$TemplateConfig/TypeName$">
+                <Name>$TemplateConfig/GroupDisplayName$</Name>
+                <Description>$TemplateConfig/GroupDescription$</Description>
+              </DisplayString>
+              $TemplateConfig/GroupRuleDisplayString$
+            </DisplayStrings>
+          </LanguagePack>
+        </LanguagePacks>
+      </Implementation>
+    </Template>
+    <Template ID="Health.Groups.SmartHealthGroup.Template">
+      <Configuration>
+        <IncludeSchemaTypes>
+          <SchemaType>IG!Microsoft.SystemCenter.GenericGroup.RulesType</SchemaType>
+          <SchemaType>SC!Microsoft.SystemCenter.GroupPopulationSchema</SchemaType>
+        </IncludeSchemaTypes>
+        <xsd:element name="Namespace" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+        <xsd:element name="TypeName" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+        <xsd:element name="LocaleId" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+        <xsd:element name="GroupDisplayName" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+        <xsd:element name="GroupDescription" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+        <xsd:element name="Rules" type="ManagementPackRules" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+        <xsd:element name="GroupRuleDisplayString" type="ManagementPackDisplayStrings" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+      </Configuration>
+      <References>
+        <Reference ID="Self" />
+        <Reference ID="SC" />
+        <Reference ID="IG" />
+      </References>
+      <Implementation>
+        <TypeDefinitions>
+          <EntityTypes>
+            <ClassTypes>
+              <ClassType ID="$TemplateConfig/Namespace$.$TemplateConfig/TypeName$" Abstract="false" Accessibility="Public" Hosted="false" Singleton="true" Base="$Reference/Self$Health.Groups.SmartHealthGroup" />
+            </ClassTypes>
+            <RelationshipTypes />
+          </EntityTypes>
+        </TypeDefinitions>
+        <Monitoring>
+          <Discoveries>
+            $TemplateConfig/Rules$
+          </Discoveries>
+        </Monitoring>
+        <LanguagePacks>
+          <LanguagePack ID="$TemplateConfig/LocaleId$" IsDefault="true">
+            <DisplayStrings>
+              <DisplayString ElementID="$TemplateConfig/Namespace$.$TemplateConfig/TypeName$">
+                <Name>$TemplateConfig/GroupDisplayName$</Name>
+                <Description>$TemplateConfig/GroupDescription$</Description>
+              </DisplayString>
+              $TemplateConfig/GroupRuleDisplayString$
+            </DisplayStrings>
+          </LanguagePack>
+        </LanguagePacks>
+      </Implementation>
+    </Template>
+  </Templates>
+  <PresentationTypes>
+    <UIPageSets>
+      <UIPageSet ID="Health.Groups.HealthGroup.Template.PageSet" TypeDefinitionID="Health.Groups.HealthGroup.Template">
+        <UIPageReferences>
+          <UIPageReference ID="Health.Groups.HealthGroup.Template.PageSet.GeneralPage" PageID="System!System.NameAndDescriptionPage" Usage="CreationOnly">
+            <InputParameters />
+            <InputTransform />
+            <Title ID="Health.Groups.HealthGroup.Template.PageSet.GeneralPage.Title" />
+            <SubTitle ID="Health.Groups.HealthGroup.Template.PageSet.GeneralPage.SubTitle" />
+          </UIPageReference>
+          <UIPageReference ID="Health.Groups.HealthGroup.Template.PageSet.InstancesPage" PageID="SC!Microsoft.SystemCenter.InstancesPage" Usage="CreationOnly">
+            <InputParameters />
+            <InputTransform />
+          </UIPageReference>
+          <UIPageReference ID="Health.Groups.HealthGroup.Template.PageSet.FormulaPage" PageID="SC!Microsoft.SystemCenter.FormulaPage" Usage="CreationOnly">
+            <InputParameters />
+            <InputTransform />
+          </UIPageReference>
+          <UIPageReference ID="Health.Groups.HealthGroup.Template.PageSet.SubgroupsPage" PageID="SC!Microsoft.SystemCenter.SubgroupsPage" Usage="CreationOnly">
+            <InputParameters />
+            <InputTransform />
+          </UIPageReference>
+          <UIPageReference ID="Health.Groups.HealthGroup.Template.PageSet.ExcludedMembersPage" PageID="SC!Microsoft.SystemCenter.ExcludedMembersPage" Usage="CreationOnly">
+            <InputParameters />
+            <InputTransform />
+          </UIPageReference>
+        </UIPageReferences>
+        <OutputTransform />
+      </UIPageSet>
+      <UIPageSet ID="Health.Groups.SmartHealthGroup.Template.PageSet" TypeDefinitionID="Health.Groups.SmartHealthGroup.Template">
+        <UIPageReferences>
+          <UIPageReference ID="Health.Groups.SmartHealthGroup.Template.PageSet.GeneralPage" PageID="System!System.NameAndDescriptionPage" Usage="CreationOnly">
+            <InputParameters />
+            <InputTransform />
+            <Title ID="Health.Groups.SmartHealthGroup.Template.PageSet.GeneralPage.Title" />
+            <SubTitle ID="Health.Groups.SmartHealthGroup.Template.PageSet.GeneralPage.SubTitle" />
+          </UIPageReference>
+          <UIPageReference ID="Health.Groups.SmartHealthGroup.Template.PageSet.InstancesPage" PageID="SC!Microsoft.SystemCenter.InstancesPage" Usage="CreationOnly">
+            <InputParameters />
+            <InputTransform />
+          </UIPageReference>
+          <UIPageReference ID="Health.Groups.SmartHealthGroup.Template.PageSet.FormulaPage" PageID="SC!Microsoft.SystemCenter.FormulaPage" Usage="CreationOnly">
+            <InputParameters />
+            <InputTransform />
+          </UIPageReference>
+          <UIPageReference ID="Health.Groups.SmartHealthGroup.Template.PageSet.SubgroupsPage" PageID="SC!Microsoft.SystemCenter.SubgroupsPage" Usage="CreationOnly">
+            <InputParameters />
+            <InputTransform />
+          </UIPageReference>
+          <UIPageReference ID="Health.Groups.SmartHealthGroup.Template.PageSet.ExcludedMembersPage" PageID="SC!Microsoft.SystemCenter.ExcludedMembersPage" Usage="CreationOnly">
+            <InputParameters />
+            <InputTransform />
+          </UIPageReference>
+        </UIPageReferences>
+        <OutputTransform />
+      </UIPageSet>
+    </UIPageSets>
+  </PresentationTypes>
+  <Presentation>
+    <Folders>
+      <Folder ID="Health.Groups.HealthGroup.Template.Folder" Accessibility="Public" />
+      <Folder ID="Health.Groups.SmartHealthGroup.Template.Folder" Accessibility="Public" />
+    </Folders>
+    <FolderItems>
+      <FolderItem ID="Health.Groups.HealthGroup.Template" ElementID="Health.Groups.HealthGroup.Template" Folder="Health.Groups.HealthGroup.Template.Folder" />
+      <FolderItem ID="Health.Groups.SmartHealthGroup.Template" ElementID="Health.Groups.SmartHealthGroup.Template" Folder="Health.Groups.SmartHealthGroup.Template.Folder" />
+    </FolderItems>
+    <ImageReferences>
+      <ImageReference ElementID="Health.Groups.HealthGroup.Template" ImageID="IMAGE!GenericGroup16"></ImageReference>
+      <ImageReference ElementID="Health.Groups.SmartHealthGroup.Template" ImageID="IMAGE!GenericGroup16"></ImageReference>
+    </ImageReferences>
+  </Presentation>
+  <LanguagePacks>
+    <LanguagePack ID="ENU" IsDefault="true">
+      <DisplayStrings>
+        <DisplayString ElementID="Health.Groups.HealthGroup">
+          <Name>Group with Health State</Name>
+          <Description>Base group class used by the Health Group template. Has standard dependency monitors targeted.</Description>
+        </DisplayString>
+        <DisplayString ElementID="Health.Groups.SmartHealthGroup">
+          <Name>Group with Smart Health State</Name>
+          <Description>Base group class used by the Smart Health Group template. Has custom dependency monitors targeted.</Description>
+        </DisplayString>
+        <DisplayString ElementID="Health.Groups.HealthGroup.Availability.DependencyMonitor">
+          <Name>Availability Dependency Monitor</Name>
+          <Description>Rolls up Availability health of group members based on configured percentage of members.</Description>
+        </DisplayString>
+        <DisplayString ElementID="Health.Groups.HealthGroup.Performance.DependencyMonitor">
+          <Name>Performance Dependency Monitor</Name>
+          <Description>Rolls up Performance health of group members based on configured percentage of members.</Description>
+        </DisplayString>
+        <DisplayString ElementID="Health.Groups.HealthGroup.Security.DependencyMonitor">
+          <Name>Security Dependency Monitor</Name>
+          <Description>Rolls up Security health of group members based on configured percentage of members.</Description>
+        </DisplayString>
+        <DisplayString ElementID="Health.Groups.HealthGroup.Configuration.DependencyMonitor">
+          <Name>Configuration Dependency Monitor</Name>
+          <Description>Rolls up Configuration health of group members based on configured percentage of members.</Description>
+        </DisplayString>
+        <DisplayString ElementID="Health.Groups.HealthGroup.Template">
+          <Name>Group with Health</Name>
+          <Description>Template creates a group that has standard dependency monitors targeted at it. Once created the group can be updated in the same way as other groups.</Description>
+        </DisplayString>
+        <DisplayString ElementID="Health.Groups">
+          <Name>Health Groups</Name>
+          <Description>Adds authoring templates to allow the creation of groups with dependency monitors already targeted.
+Documentation and the latest version can be found on GitHub - https://github.com/KeithRochester/Health-Groups.
+
+If you have any questions or suggestions, please send me a message keith.rochester@unit92.com
+          </Description>
+        </DisplayString>
+        <DisplayString ElementID="Health.Groups.SetMonitorState">
+          <Name>Set Monitor Health State</Name>
+          <Description>Sets the health state of the monitor.</Description>
+        </DisplayString>
+        <DisplayString ElementID="Health.Groups.SmartHealthGroup.Availability.Percentage.DependencyMonitor">
+          <Name>Availability Percentage Roll Up</Name>
+          <Description>Rolls up Availability health of group members based on configured percentage of members.</Description>
+        </DisplayString>
+        <DisplayString ElementID="Health.Groups.SmartHealthGroup.Availability.WorstOfCustom.DependencyMonitor">
+          <Name>Availability Custom Worst of Roll Up</Name>
+          <Description>Rolls up Availability health of group members based worst member health. Critical States are rolled up as warning.</Description>
+        </DisplayString>
+        <DisplayString ElementID="Health.Groups.SmartHealthGroup.Availability.WorstOfCustom.DependencyMonitor.Recovery">
+          <Name>Sets Critical Availability Health State to Warning</Name>
+          <Description>Sets Critical Availability Health State to Warning.</Description>
+        </DisplayString>
+        <DisplayString ElementID="Health.Groups.SmartHealthGroup.Performance.Percentage.DependencyMonitor">
+          <Name>Performance Percentage Roll Up</Name>
+          <Description>Rolls up Performance health of group members based on configured percentage of members.</Description>
+        </DisplayString>
+        <DisplayString ElementID="Health.Groups.SmartHealthGroup.Performance.WorstOfCustom.DependencyMonitor">
+          <Name>Performance Custom Worst of Roll Up</Name>
+          <Description>Rolls up Performance health of group members based worst member health. Critical States are rolled up as warning.</Description>
+        </DisplayString>
+        <DisplayString ElementID="Health.Groups.SmartHealthGroup.Performance.WorstOfCustom.DependencyMonitor.Recovery">
+          <Name>Sets Critical Performance Health State to Warning</Name>
+          <Description>Sets Critical Performance Health State to Warning.</Description>
+        </DisplayString>
+        <DisplayString ElementID="Health.Groups.SmartHealthGroup.Security.Percentage.DependencyMonitor">
+          <Name>Security Percentage Roll Up</Name>
+          <Description>Rolls up Security health of group members based on configured percentage of members.</Description>
+        </DisplayString>
+        <DisplayString ElementID="Health.Groups.SmartHealthGroup.Security.WorstOfCustom.DependencyMonitor">
+          <Name>Security Custom Worst of Roll Up</Name>
+          <Description>Rolls up Security health of group members based worst member health. Critical States are rolled up as warning.</Description>
+        </DisplayString>
+        <DisplayString ElementID="Health.Groups.SmartHealthGroup.Security.WorstOfCustom.DependencyMonitor.Recovery">
+          <Name>Sets Critical Security Health State to Warning</Name>
+          <Description>Sets Critical Security Health State to Warning.</Description>
+        </DisplayString>
+        <DisplayString ElementID="Health.Groups.SmartHealthGroup.Configuration.Percentage.DependencyMonitor">
+          <Name>Configuration Percentage Roll Up</Name>
+          <Description>Rolls up Configuration health of group members based on configured percentage of members.</Description>
+        </DisplayString>
+        <DisplayString ElementID="Health.Groups.SmartHealthGroup.Configuration.WorstOfCustom.DependencyMonitor">
+          <Name>Configuration Custom Worst of Roll Up</Name>
+          <Description>Rolls up Configuration health of group members based worst member health. Critical States are rolled up as warning.</Description>
+        </DisplayString>
+        <DisplayString ElementID="Health.Groups.SmartHealthGroup.Configuration.WorstOfCustom.DependencyMonitor.Recovery">
+          <Name>Sets Critical Configuration Health State to Warning</Name>
+          <Description>Sets Critical Configuration Health State to Warning.</Description>
+        </DisplayString>
+        <DisplayString ElementID="Health.Groups.SmartHealthGroup.Template">
+          <Name>Group with Smart Health</Name>
+          <Description>Template creates a group that has custom dependency monitors targeted at it. The percentage monitor functions as normal and rolls up health once more than the configured percentage of objects are in a health state. The custom worst of will have health state set to warning if it changes to critical. Once created the group can be updated in the same way as other groups.</Description>
+        </DisplayString>
+        <DisplayString ElementID="Health.Groups.HealthGroup.Template.Folder">
+          <Name>Group with Health</Name>
+          <Description>Template creates a group that has standard dependency monitors targeted at it. Once created the group can be updated in the same way as other groups.</Description>
+        </DisplayString>
+        <DisplayString ElementID="Health.Groups.SmartHealthGroup.Template.Folder">
+          <Name>Group with Smart Health</Name>
+          <Description>Template creates a group that has custom dependency monitors targeted at it. The percentage monitor functions as normal and rolls up health once more than the configured percentage of objects are in a health state. The custom worst of will have health state set to warning if it changes to critical. Once created the group can be updated in the same way as other groups.</Description>
+        </DisplayString>
+      </DisplayStrings>
+      <KnowledgeArticles>
+        <KnowledgeArticle ElementID="Health.Groups" Visible="true">
+          <MamlContent>
+            <maml:section xmlns:maml="http://schemas.microsoft.com/maml/2004/10">
+              <maml:title>Health Groups</maml:title>
+              <maml:para>
+                Documentation and the latest version can be found on GitHub -<maml:navigationLink><maml:linkText>https://github.com/KeithRochester/Health-Groups.</maml:linkText><maml:uri href="https://github.com/KeithRochester/Health-Groups" /></maml:navigationLink>. 
+              </maml:para>
+              <maml:para>
+                If you have any questions or suggestions, please send me a message <maml:navigationLink><maml:linkText>keith.rochester@unit92.com</maml:linkText><maml:uri href="mailto:keith.rochester@unit92.com?subject=Standard%20Monitoring%20Framework" /></maml:navigationLink></maml:para>
+            </maml:section>
+          </MamlContent>
+        </KnowledgeArticle>
+      </KnowledgeArticles>
+    </LanguagePack>
+  </LanguagePacks>
+</ManagementPack>

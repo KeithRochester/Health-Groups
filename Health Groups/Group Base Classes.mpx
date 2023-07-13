@@ -1,0 +1,24 @@
+﻿<ManagementPackFragment SchemaVersion="2.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <TypeDefinitions>
+    <EntityTypes>
+      <ClassTypes>
+        <ClassType ID="Health.Groups.HealthGroup" Abstract="true" Hosted="false" Base="IG!Microsoft.SystemCenter.InstanceGroup" Accessibility="Public"></ClassType>
+        <ClassType ID="Health.Groups.SmartHealthGroup" Abstract="true" Hosted="false" Base="IG!Microsoft.SystemCenter.InstanceGroup" Accessibility="Public"></ClassType>
+      </ClassTypes>
+    </EntityTypes>
+  </TypeDefinitions>
+  <LanguagePacks>
+    <LanguagePack ID="ENU" IsDefault="true">
+      <DisplayStrings>
+        <DisplayString ElementID="Health.Groups.HealthGroup">
+          <Name>Group with Health State</Name>
+          <Description>Base group class used by the Health Group template. Has standard dependency monitors targeted.</Description>
+        </DisplayString>
+        <DisplayString ElementID="Health.Groups.SmartHealthGroup">
+          <Name>Group with Smart Health State</Name>
+          <Description>Base group class used by the Smart Health Group template. Has custom dependency monitors targeted.</Description>
+        </DisplayString> 
+      </DisplayStrings>
+    </LanguagePack>
+  </LanguagePacks>
+</ManagementPackFragment>
