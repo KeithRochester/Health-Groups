@@ -7,7 +7,7 @@
 * [Visual Studio Solution Files](<Health Groups>)
 
 # Introduction
-Health Group MP is a simple MP to address an annoyance with the groups that the authoring workspace creates, and a limitation of dependency monitors. 
+Health Groups MP is a simple MP to address an annoyance with the groups that the authoring workspace creates, and a limitation of dependency monitors. 
 
 * Groups are created without any dependency monitors to roll up the health of members. You can workaround this for previously created groups using the [OpsMgr Group Health Rollup Configuration Task Management Pack](https://ds.squaredup.com/blog/opsmgr-group-health-rollup-configuration-task-management-pack/), but I'd prefer a one step process.
 
