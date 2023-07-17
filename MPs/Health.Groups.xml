@@ -3,7 +3,7 @@
   <Manifest>
     <Identity>
       <ID>Health.Groups</ID>
-      <Version>1.0.0.24</Version>
+      <Version>1.0.0.25</Version>
     </Identity>
     <Name>Health Groups</Name>
     <References>
